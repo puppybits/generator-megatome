@@ -89,7 +89,7 @@ var baseConfig = {
       loader: 'file?name=[name].[ext]'
     }, {
       /* File Exporter to include index */
-      test: [/index\.html$/, /\.(ico)/],
+      test: [/\.(ico)/],
       loader: 'file?name=[name].[ext]'
     }]
   },

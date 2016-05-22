@@ -11,15 +11,15 @@ if (__DEV__) {
   require('common/debugging');
 }
 
-let { createHistory } = require('history'),
-  history = createHistory();
+let { browserHistory } = require('react-router');
+let routes = require('routes');
 
 // bootstrapping to the index.html
 let mount = window.document.getElementById('app');
 if (!mount){
   mount = window.document.createElement("div");
   mount.id = "app";
-  window.document.body.appendChild('mount');
+  document.body.appendChild(mount);
 }
 
 // const enforceAuth = (router, replaceWith) => {
@@ -33,9 +33,8 @@ if (!mount){
 require.ensure([],
   // lazy require allows webpack to HMR the app
   require => {
-    let routes = require('routes');
     ReactDom.render(
-      <ReactRouter.Router history={history}>
+      <ReactRouter.Router history={browserHistory}>
         {routes}
       </ReactRouter.Router>, mount);
   });
